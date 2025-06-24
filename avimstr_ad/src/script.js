@@ -424,7 +424,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     allGamesBtnIntro.addEventListener('click', () => {
-        alert(translations[currentLang].alertMessages.allGamesNotImplemented);
+        window.open('https://polumertvec.github.io/SWbot/', '_blank');
     });
 
     mainMenuBackButton.addEventListener('click', () => {
