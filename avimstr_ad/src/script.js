@@ -424,6 +424,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     allGamesBtnIntro.addEventListener('click', () => {
+        // Открываем внешнюю ссылку в новой вкладке
         window.open('https://polumertvec.github.io/SWbot/', '_blank');
     });
 
