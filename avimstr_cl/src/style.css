@@ -130,7 +130,7 @@ body {
     align-items: center;
     justify-content: space-between;
     padding-top: 5vh; /* Отступ сверху для лого */
-    padding-bottom: 10vh; /* Увеличиваем отступ снизу, чтобы гарантировать видимость кнопок */
+    padding-bottom: 5vh; /* Увеличиваем отступ снизу, чтобы гарантировать видимость кнопок */
     box-sizing: border-box;
     height: 100%;
     width: 100%;
@@ -139,7 +139,7 @@ body {
 /* Медиа-запросы для #intro-scene-screen, если нужно еще больше места на больших экранах */
 @media (min-width: 768px) {
     #intro-scene-screen {
-        padding-top: 15vh; /* Можно увеличить, если логотип кажется слишком низко */
+        padding-top: 8vh; /* Можно увеличить, если логотип кажется слишком низко */
         padding-bottom: 8vh; /* Увеличиваем для больших экранов */
     }
 }
@@ -479,7 +479,7 @@ body {
     color: white;
     padding: 10px 20px;
     border: none;
-    border-radius: 25px;
+    border-radius: 12px;
     font-size: 1em;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
@@ -496,7 +496,7 @@ body {
     color: white;
     padding: 10px 20px;
     border: none;
-    border-radius: 25px;
+    border-radius: 12px;
     font-size: 0.9em;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
@@ -581,7 +581,7 @@ body {
     display: none; /* ДОБАВЛЕНО: Скрываем по умолчанию */
     position: absolute; /* Позиционируем абсолютно, чтобы он был внизу экрана */
      /* Отступ снизу */
-    top:80%;
+    top:75%;
     left: 50%; /* Центрируем по горизонтали */
     transform: translate(-50%, -100%); /* Сдвигаем на половину своей ширины назад */
     width: 80%;
