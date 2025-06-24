@@ -125,7 +125,6 @@ body {
     animation-delay: 1s;
 }
 
-/* ВСТУПИТЕЛЬНАЯ СЦЕНА (#intro-scene-screen) */
 #intro-scene-screen {
     position: relative;
     overflow: hidden;
@@ -133,19 +132,17 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* justify-content: space-between; /* УДАЛЕНО: используем отступы */
-    padding-top: 5vh; /* Отступ сверху для лого */
-    padding-bottom: 2vh; /* Отступ снизу для кнопок */
+    padding-top: 5vh;
+    padding-bottom: 2vh; /* Отступ снизу, чтобы кнопки не прилипали */
     box-sizing: border-box;
     height: 100%;
     width: 100%;
 }
 
-/* Медиа-запросы для #intro-scene-screen, если нужно еще больше места на больших экранах */
 @media (min-width: 768px) {
     #intro-scene-screen {
         padding-top: 8vh;
-        padding-bottom: 5vh; /* Увеличиваем отступ снизу на больших экранах */
+        padding-bottom: 5vh;
     }
 }
 
@@ -159,7 +156,6 @@ body {
     z-index: 1;
 }
 
-/* ЭФФЕКТ ЗВЕЗДНОГО НЕБА */
 .stars {
     position: absolute;
     top: 0;
@@ -180,6 +176,7 @@ body {
     height: 1px;
     background: transparent;
     box-shadow:
+        /* ... (ваш список box-shadow для звезд) ... */
         10px 20px #fff, 80px 150px #fff, 20px 200px #fff, 120px 80px #fff, 180px 250px #fff,
         250px 50px #fff, 300px 100px #fff, 350px 220px #fff, 50px 300px #fff, 150px 120px #fff,
         220px 180px #fff, 320px 70px #fff, 40px 10px #fff, 190px 40px #fff, 280px 160px #fff,
@@ -201,29 +198,13 @@ body {
         190px 25px #fff, 260px 140px #fff, 320px 250px #fff, 80px 90px #fff, 150px 20px #fff,
         220px 150px #fff, 290px 270px #fff, 40px 30px #fff, 110px 100px #fff, 180px 210px #fff,
         250px 60px #fff, 310px 170px #fff, 70px 180px #fff, 140px 50px #fff, 210px 290px #fff,
-
-        /* НОВЫЕ ЗВЕЗДЫ В ПРАВОЙ ЧАСТИ ЭКРАНА */
-        360px 10px #fff,
-        380px 70px #fff,
-        395px 120px #fff,
-        370px 180px #fff,
-        390px 230px #fff,
-        355px 290px #fff,
-        375px 40px #fff,
-        365px 100px #fff,
-        385px 160px #fff,
-        370px 210px #fff,
-        390px 270px #fff,
-        360px 55px #fff,
-        380px 115px #fff,
-        395px 175px #fff,
-        370px 235px #fff,
+        360px 10px #fff, 380px 70px #fff, 395px 120px #fff, 370px 180px #fff, 390px 230px #fff,
+        355px 290px #fff, 375px 40px #fff, 365px 100px #fff, 385px 160px #fff, 370px 210px #fff,
+        390px 270px #fff, 360px 55px #fff, 380px 115px #fff, 395px 175px #fff, 370px 235px #fff,
         355px 15px #fff;
-
     animation: twinkle 5s infinite ease-in-out alternate, twinkle-delay 5s infinite ease-in-out alternate;
 }
 
-/* Анимация мерцания (без transform: scale) */
 @keyframes twinkle {
     0%, 100% { opacity: 0.8; }
     25% { opacity: 0.5; }
@@ -231,7 +212,6 @@ body {
     75% { opacity: 0.6; }
 }
 
-/* Анимация задержки мерцания */
 @keyframes twinkle-delay {
     0% { animation-delay: 0s; }
     25% { animation-delay: 0.5s; }
@@ -241,20 +221,19 @@ body {
 }
 
 #intro-logo {
-    position: relative; /* Оставим relative, чтобы оно было в потоке и отступы работали */
+    position: relative;
     width: 70%;
     max-width: 250px;
     height: auto;
     z-index: 7;
-    margin-bottom: auto; /* Прижимает логотип вверх, если использовать justify-content: flex-start */
-    /* Или: margin-top: 5vh; если хотите точный отступ сверху */
+    margin-bottom: auto; /* Прижимает логотип к верху */
 }
 
 .scene-elements {
-    position: absolute; /* ВОЗВРАЩАЕМ ABSOLUTE */
+    position: absolute;
     bottom: 0; /* Прижимаем к низу intro-scene-screen */
     width: 100%;
-    height: 60vh; /* Устанавливаем высоту сцены в vh */
+    height: 60vh; /* Высота сцены в % от высоты вьюпорта. Можно подкорректировать. */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -263,13 +242,27 @@ body {
     overflow: hidden;
 }
 
+/* --- НОВЫЙ КОНТЕЙНЕР ДЛЯ КОРАБЛЯ И САМОЛЕТА --- */
+.carrier-plane-group {
+    position: absolute; /* Позиционируем относительно .scene-elements */
+    width: 100%; /* Занимает всю ширину .scene-elements */
+    height: 100%; /* Занимает всю высоту .scene-elements */
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: center; /* Центрируем по горизонтали, если нужно */
+    align-items: flex-end; /* Прижимаем содержимое к низу */
+    overflow: hidden; /* Важно, чтобы обрезать выступающие части */
+    /* background-color: rgba(255, 0, 0, 0.2); /* Для отладки */
+}
+
 /* --- ОБНОВЛЕННЫЕ СТИЛИ ДЛЯ ВОДЫ (ТОЛЬКО ОДИН СЛОЙ) --- */
 .water-layers {
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 50%; /* Занимает 50% от высоты родителя .scene-elements (т.е. 30vh) */
+    height: 50%; /* Занимает 50% от высоты родителя .scene-elements */
     overflow: hidden;
     z-index: 4;
     background: linear-gradient(to top, #0a1f2f 0%, #1a5169 50%, #4a8ca4 100%);
@@ -292,35 +285,36 @@ body {
 }
 
 #aircraft-carrier {
-    position: absolute;
-    bottom: 25%; /* Скорректировано: 25% от высоты 60vh = 15vh. Подбирайте это значение */
-    width: 250%;
-    max-width: none;
+    position: absolute; /* Теперь относительно .carrier-plane-group */
+    bottom: 24%; /* Скорректировано. % от высоты .carrier-plane-group. Начнем с 0 и поднимем. */
+    left: 128%; /* Центрируем по горизонтали относительно group */
+    transform: translateX(-50%); /* Точно центрируем */
+    width: 246%; /* **КЛЮЧЕВОЕ ИЗМЕНЕНИЕ: Ширина в % от родителя (.carrier-plane-group)** */
+    max-width: none; /* Убираем max-width, т.к. % уже ограничивает */
     height: auto;
     z-index: 7;
     animation: floatBoat 5s ease-in-out infinite alternate;
-    left: 5%;
 }
 
 @keyframes floatBoat {
-    from { transform: translateY(0px); }
-    to { transform: translateY(-10px); }
+    from { transform: translateX(-50%) translateY(0px); } /* Обновлено с учетом translateX */
+    to { transform: translateX(-50%) translateY(-10px); } /* Обновлено с учетом translateX */
 }
 
 #airplane {
-    position: absolute;
-    bottom: 40%; /* Скорректировано: 40% от высоты 60vh = 24vh. Подбирайте это значение */
-    left: 25%;
-    transform: translateX(-50%);
-    width: 60%;
-    max-width: 200px;
+    position: absolute; /* Теперь относительно .carrier-plane-group */
+    bottom: 37%; /* Начнем с 25% и будем корректировать. % от ВЫСОТЫ .carrier-plane-group. Начнем с 0 и поднимем. */
+    left: 50%; /* Центрируем по горизонтали относительно group */
+    transform: translateX(-50%); /* Точно центрируем */
+    width: 55%; /* Уменьшаем ширину самолета. Это % от ШИРИНЫ .carrier-plane-group */
+    max-width: none; /* Убираем max-width */
     height: auto;
     z-index: 8;
-    animation: floatBoat 5s ease-in-out infinite alternate;
+    animation: floatBoat 5s ease-in-out infinite alternate; /* Та же анимация, что и у корабля */
 }
 
 .intro-buttons-container {
-    position: relative; /* Оставим relative, чтобы оно было в потоке и отступы работали */
+    position: relative;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -433,7 +427,7 @@ body {
     color: white;
     padding: 10px 20px;
     border: none;
-    border-radius: 25px; /* У вас было 12px, я вернул 25px, как в .secondary-button */
+    border-radius: 25px;
     font-size: 1em;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
@@ -450,7 +444,7 @@ body {
     color: white;
     padding: 10px 20px;
     border: none;
-    border-radius: 25px; /* Осталось 25px */
+    border-radius: 25px;
     font-size: 0.9em;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
