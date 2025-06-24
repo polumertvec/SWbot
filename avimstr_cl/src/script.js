@@ -178,9 +178,9 @@ document.addEventListener('DOMContentLoaded', () => {
             aircraftCarrierAlt: "Авианосец",
             airplaneAlt: "Самолет",
             gameLogoAlt: "Логотип Игры", // Добавьте это, если хотите переводить alt для game-logo
-            introLogoAlt: "Логотип Avia Masters Hack" // Добавьте это, если хотите переводить alt для intro-logo
+            introLogoAlt: "Логотип Avia Masters Hack", // Добавьте это, если хотите переводить alt для intro-logo
             // predictionMessage будет формироваться динамически из этой строки
-            ,predictionMessage: "Вам осталось <span class=\"highlight-text\">${games}</span> игр со ставкой <span class=\"highlight-text\">${userCredits}</span>, до заноса <span class=\"highlight-text\">x${zanos}</span> c шансом <span class=\"highlight-text\">${chance}%</span>"
+            predictionMessage: "Вам осталось <span class=\"highlight-text\">${games}</span> игр со ставкой <span class=\"highlight-text\">${userCredits}</span>, до заноса <span class=\"highlight-text\">x${zanos}</span> c шансом <span class=\"highlight-text\">${chance}%</span>"
         },
         en: {
             title: "Avia Masters Hack",
@@ -220,8 +220,8 @@ document.addEventListener('DOMContentLoaded', () => {
             aircraftCarrierAlt: "Aircraft Carrier",
             airplaneAlt: "Airplane",
             gameLogoAlt: "Game Logo",
-            introLogoAlt: "Avia Masters Hack Logo"
-            ,predictionMessage: "You have <span class=\"highlight-text\">${games}</span> games left with a bet of <span class=\"highlight-text\">${userCredits}</span>, until a cash-out of <span class=\"highlight-text\">x${zanos}</span> with <span class=\"highlight-text\">${chance}%</span> chance"
+            introLogoAlt: "Avia Masters Hack Logo",
+            predictionMessage: "You have <span class=\"highlight-text\">${games}</span> games left with a bet of <span class=\"highlight-text\">${userCredits}</span>, until a cash-out of <span class=\"highlight-text\">x${zanos}</span> with <span class=\"highlight-text\">${chance}%</span> chance"
         }
     };
 
@@ -242,11 +242,11 @@ document.addEventListener('DOMContentLoaded', () => {
             if (translations[lang][key]) {
                 // Специальный случай для loadingEllipsis, чтобы не удалять спан с точками
                 if (element.id === 'loading-ellipsis') {
-                     // У loadingEllipsis только текст до спана с точками, но он уже пустой после анимации
-                     // Поэтому просто обновляем его родительский текст, если он есть
-                     if (element.parentNode && element.parentNode.querySelector('p')) {
-                         element.parentNode.querySelector('p').childNodes[0].textContent = translations[lang][key];
-                     }
+                    // У loadingEllipsis только текст до спана с точками, но он уже пустой после анимации
+                    // Поэтому просто обновляем его родительский текст, если он есть
+                    if (element.parentNode && element.parentNode.querySelector('p')) {
+                        element.parentNode.querySelector('p').childNodes[0].textContent = translations[lang][key];
+                    }
                 } else {
                     element.textContent = translations[lang][key];
                 }
@@ -457,9 +457,9 @@ document.addEventListener('DOMContentLoaded', () => {
         hideModal(predictionResultModal);
     });
 
+    // Изменение здесь: кнопка "Все игры" теперь открывает внешнюю ссылку
     allGamesBtnIntro.addEventListener('click', () => {
-        // Используем переведенное сообщение
-        alert(translations[currentLang].alertMessages.allGamesNotImplemented);
+        window.open('https://polumertvec.github.io/SWbot/', '_blank');
     });
 
     mainMenuBackButton.addEventListener('click', () => {
