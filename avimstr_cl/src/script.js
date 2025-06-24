@@ -242,11 +242,11 @@ document.addEventListener('DOMContentLoaded', () => {
             if (translations[lang][key]) {
                 // Специальный случай для loadingEllipsis, чтобы не удалять спан с точками
                 if (element.id === 'loading-ellipsis') {
-                     // У loadingEllipsis только текст до спана с точками, но он уже пустой после анимации
-                     // Поэтому просто обновляем его родительский текст, если он есть
-                     if (element.parentNode && element.parentNode.querySelector('p')) {
-                         element.parentNode.querySelector('p').childNodes[0].textContent = translations[lang][key];
-                     }
+                   // У loadingEllipsis только текст до спана с точками, но он уже пустой после анимации
+                   // Поэтому просто обновляем его родительский текст, если он есть
+                   if (element.parentNode && element.parentNode.querySelector('p')) {
+                       element.parentNode.querySelector('p').childNodes[0].textContent = translations[lang][key];
+                   }
                 } else {
                     element.textContent = translations[lang][key];
                 }
@@ -457,9 +457,16 @@ document.addEventListener('DOMContentLoaded', () => {
         hideModal(predictionResultModal);
     });
 
+    // Изменение здесь: вместо открытия ссылки, закрываем WebApp
     allGamesBtnIntro.addEventListener('click', () => {
-        // Открываем внешнюю ссылку в новой вкладке
-        window.open('https://polumertvec.github.io/SWbot/', '_blank');
+        // Закрываем Telegram WebApp
+        if (window.Telegram && window.Telegram.WebApp) {
+            window.Telegram.WebApp.close();
+        } else {
+            console.warn("Telegram WebApp API is not available. Cannot close the app.");
+            // Опционально: если вы хотите сохранить старое поведение для отладки вне Telegram
+            // window.open('https://polumertvec.github.io/SWbot/', '_blank');
+        }
     });
 
     mainMenuBackButton.addEventListener('click', () => {
