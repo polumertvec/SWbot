@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Mines Hack</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 <body>
     <div class="logo-container">
@@ -32,10 +33,10 @@
             <button class="arrow-button" id="left-arrow">
                 <img src="images/minus.png">
             </button>
-        <button id="flip"></button>
-        <button class="arrow-button" id="right-arrow">
-            <img src="images/plus.png">
-        </button>
+            <button id="flip"></button>
+            <button class="arrow-button" id="right-arrow">
+                <img src="images/plus.png">
+            </button>
         </div>
         <div id="progress-bar-container">
             <div id="progress-bar"></div>
@@ -43,10 +44,32 @@
         <div id="countdown"></div>
     </div>
     <div class="tab">
-        <button class="tablinks games-icon" data-tab="Games" onclick="window.location.href='https://polumertvec.github.io/SWbot/'">
+        <button class="tablinks games-icon" data-tab="Games" onclick="closeWebApp()">
             <img src="images/back.png" alt="Игры">
         </button>
     </div>
+
+    <script>
+        // Функция для закрытия Telegram Web App
+        function closeWebApp() {
+            // Проверяем, доступен ли Telegram Web Apps API
+            if (typeof Telegram !== 'undefined' && Telegram.WebApp) {
+                Telegram.WebApp.close();
+            } else {
+                console.log("Telegram Web App API не доступен. Возможно, вы запускаете не в Telegram.");
+                // Опционально: если вы тестируете вне Telegram,
+                // можно вернуться на предыдущую страницу в браузере
+                // window.history.back();
+                // или перейти на основную страницу (как было у вас)
+                // window.location.href = 'https://polumertvec.github.io/SWbot/';
+            }
+        }
+
+        // Если у вас есть другой код в script.js, оставьте его здесь
+        // Например, ваш существующий код:
+        // document.addEventListener('DOMContentLoaded', function() { /* ваш код */ });
+        // и т.д.
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
