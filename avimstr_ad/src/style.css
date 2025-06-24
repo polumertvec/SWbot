@@ -1,3 +1,5 @@
+/* admin-style.css - Обновленный код с параметрами масштабирования */
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -10,12 +12,17 @@ body {
     color: #ecf0f1;
     overflow: hidden;
     position: relative;
+    user-select: none; /* Добавлено: Запрет выделения текста */
+    -webkit-tap-highlight-color: transparent; /* Добавлено: Убирает подсветку при тапе на iOS */
+    -webkit-touch-callout: none; /* Добавлено: Убирает меню при долгом нажатии на iOS */
+    scroll-behavior: smooth; /* Добавлено: Плавная прокрутка */
 }
 
 #app {
     width: 100%;
     max-width: 400px;
-    height: 800px; /* Фиксированная высота для мобильных устройств, например, iPhone 15 Pro Max */
+    height: 100vh; /* ИЗМЕНЕНО: #app теперь занимает 100% высоты вьюпорта */
+    max-height: 800px; /* ДОБАВЛЕНО: Ограничиваем максимальную высоту на очень больших экранах */
     background-color: transparent; /* Убрал background-color, чтобы небо было видно */
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
@@ -318,19 +325,19 @@ body {
     animation: none; /* Убираем все анимации */
     filter: none; /* Убираем фильтры */
     background: linear-gradient(to top, #0a1f2f 0%, #1a5169 50%, #4a8ca4 100%);
-    z-index: 1; 
+    z-index: 1;
     opacity: 1;
 }
 
 #aircraft-carrier {
     position: absolute;
-    bottom: 55%; 
+    bottom: 55%;
     width: 250%;
     max-width: none;
     height: auto;
-    z-index: 7; 
-    animation: floatBoat 5s ease-in-out infinite alternate; 
-    left: 5%; 
+    z-index: 7;
+    animation: floatBoat 5s ease-in-out infinite alternate;
+    left: 5%;
 }
 
 @keyframes floatBoat {
@@ -340,13 +347,13 @@ body {
 
 #airplane {
     position: absolute;
-    bottom: 72%; 
+    bottom: 72%;
     left: 25%;
-    transform: translateX(-50%); 
+    transform: translateX(-50%);
     width: 60%;
     max-width: 200px;
     height: auto;
-    z-index: 8; 
+    z-index: 8;
     animation: floatBoat 5s ease-in-out infinite alternate;
 }
 
@@ -536,8 +543,9 @@ body {
     to { transform: scale(1) translateY(0); opacity: 1; }
 }
 
+/* Эти стили для полей ввода ОСТАЮТСЯ БЕЗ ИЗМЕНЕНИЙ, как вы и просили */
 #credits-input,
-#manual-input-textarea { 
+#manual-input-textarea {
     padding: 12px;
     border-radius: 6px;
     border: 1px solid #5d6d7e;
@@ -561,13 +569,15 @@ body {
     font-family: 'Courier New', Courier, monospace;
     font-size: 0.9em;
 }
+/* КОНЕЦ БЛОКА, КОТОРЫЙ НЕ ИЗМЕНЯЛСЯ */
+
 
 /* СТИЛИ ДЛЯ СТАТУС-БАРА АНАЛИЗА */
 #analysis-bar-container {
-    display: none; 
-    position: absolute; 
+    display: none;
+    position: absolute;
     top:80%;
-    left: 50%; 
+    left: 50%;
     transform: translate(-50%, -100%);
     width: 80%;
     max-width: 300px;
