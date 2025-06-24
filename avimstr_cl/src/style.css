@@ -140,7 +140,7 @@ body {
 @media (min-width: 768px) {
     #intro-scene-screen {
         padding-top: 8vh; /* Можно увеличить, если логотип кажется слишком низко */
-        padding-bottom: 8vh; /* Увеличиваем для больших экранов */
+        padding-bottom: 30vh; /* Увеличиваем для больших экранов */
     }
 }
 
