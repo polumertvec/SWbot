@@ -130,7 +130,7 @@ body {
     align-items: center;
     justify-content: space-between;
     padding-top: 5vh; /* Отступ сверху для лого */
-    padding-bottom: 10vh; /* Увеличиваем отступ снизу, чтобы гарантировать видимость кнопок */
+    padding-bottom: 5vh; /* Увеличиваем отступ снизу, чтобы гарантировать видимость кнопок */
     box-sizing: border-box;
     height: 100%;
     width: 100%;
@@ -140,7 +140,7 @@ body {
 @media (min-width: 768px) {
     #intro-scene-screen {
         padding-top: 8vh; /* Можно увеличить, если логотип кажется слишком низко */
-        padding-bottom: 30vh; /* Увеличиваем для больших экранов */
+        padding-bottom: 15vh; /* Увеличиваем для больших экранов */
     }
 }
 
